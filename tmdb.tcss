@@ -1,20 +1,38 @@
-ListView {
-    color: red;
-    border: dashed green;
+Screen {
+    layout: grid;
+    grid-size: 4 3;
+    grid-rows: 1 2fr 1;
 }
 
 Label {
-    padding: 1;
-    text-align: center;
-    border: dashed blue;
+    width: 100%;
 }
 
-#test {
-    content-align: center middle;
-    background: red;
-    text-align: center;
+ListView {
+    padding: 1;
 }
 
 TextArea {
     height: 1;
+    column-span: 4;
+}
+
+#pop {
+    text-align: center;
+    background: #F2B441;
+}
+
+#now {
+    text-align: center;
+    background: #33D4FF;
+}
+
+#top {
+    text-align: center;
+    background: #3CCB7F;
+}
+
+#up {
+    text-align: center;
+    background: #A77BFF;
 }
