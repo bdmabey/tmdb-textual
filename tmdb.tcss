@@ -1,0 +1,20 @@
+ListView {
+    color: red;
+    border: dashed green;
+}
+
+Label {
+    padding: 1;
+    text-align: center;
+    border: dashed blue;
+}
+
+#test {
+    content-align: center middle;
+    background: red;
+    text-align: center;
+}
+
+TextArea {
+    height: 1;
+}

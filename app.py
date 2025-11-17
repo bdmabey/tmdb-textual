@@ -14,7 +14,6 @@ class TimeDisplay(Digits):
 
     def on_mount(self) -> None:
         self.update_timer = self.set_interval(1 / 60, self.update_time, pause=True)
-        self.test = 0
 
     def update_time(self) -> None:
         self.time = self.total + (monotonic() - self.start_time)
