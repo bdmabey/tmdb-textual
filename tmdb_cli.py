@@ -8,6 +8,10 @@ class Test_list(ListView):
     def on_mount(self) -> None:
         self.extend([ListItem(Label("class item"))])
 
+    def on_list_view_selected(self, event: ListView.Selected):
+        select = event.index
+        self.pop(select)
+
 class TMDB_App(App):
     """TMDB base application. Holds the main screen layout."""
 
@@ -31,8 +35,8 @@ class TMDB_App(App):
             ListItem(Label("asdf"))
         )
         # yield ListView(ListItem(Label("test2")))
+        yield TMDB_List()
         yield Test_list()
-        yield ListView(ListItem(Label("test3")))
         yield ListView(ListItem(Label("test4")))
         yield TextArea(placeholder="Search...", compact=True)
 
