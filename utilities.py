@@ -1,4 +1,5 @@
 import httpx
+import requests
 
 async def get_movie_lists(category: str) -> list:
     url = ""
@@ -28,3 +29,4 @@ async def get_movie_lists(category: str) -> list:
     movie_list = json["results"]
 
     return movie_list
+
