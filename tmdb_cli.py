@@ -5,17 +5,8 @@ from textual.events import Key
 from textual.message import Message
 
 from tmdb_list import TMDB_List
-from movie import Movie
 import utilities
 import asyncio
-
-class Test_list(ListView):
-    def on_mount(self) -> None:
-        self.extend([ListItem(Label("class item")), Movie()])
-
-    def on_list_view_selected(self, event: ListView.Selected):
-        select = event.index
-        self.pop(select)
 
 class TMDB_App(App):
     """TMDB base application. Holds the main screen layout."""
