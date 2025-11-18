@@ -12,6 +12,14 @@ ListView {
     padding: 1;
 }
 
+ListView #title {
+    text-align: center;
+}
+
+ListItem:hover {
+    background: $secondary;
+}
+
 TextArea {
     height: 1;
     column-span: 4;
