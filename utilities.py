@@ -1,6 +1,6 @@
-import requests
+import httpx
 
-def get_movie_lists(category: str):
+async def get_movie_lists(category: str) -> list:
     url = ""
     api_key = ""
     if category == "pop":
@@ -20,7 +20,8 @@ def get_movie_lists(category: str):
         "Authorization": "Bearer " + api_key
     }
 
-    response = requests.get(url, headers=headers)
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url=url, headers=headers)
 
     json = response.json()
 
