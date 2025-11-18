@@ -2,7 +2,16 @@ from textual.app import App, ComposeResult
 from textual.widgets import Footer, Header, ListView, ListItem, Label, TextArea
 from textual.containers import Horizontal
 
+from tmdb_list import TMDB_List
+
+class Test_list(ListView):
+    def on_mount(self) -> None:
+        self.extend([ListItem(Label("class item"))])
+
 class TMDB_App(App):
+    """TMDB base application. Holds the main screen layout."""
+
+
     CSS_PATH = "tmdb.tcss"
     BINDINGS = [
         ("d", "toggle_dark", "Toggle Dark Mode"),
@@ -17,8 +26,12 @@ class TMDB_App(App):
         yield Label("Now Playing", id="now")
         yield Label("Top Rated", id="top")
         yield Label("Upcoming", id="up")
-        yield ListView(ListItem(Label("test1")))
-        yield ListView(ListItem(Label("test2")))
+        yield ListView(
+            ListItem(Label("test1")), 
+            ListItem(Label("asdf"))
+        )
+        # yield ListView(ListItem(Label("test2")))
+        yield Test_list()
         yield ListView(ListItem(Label("test3")))
         yield ListView(ListItem(Label("test4")))
         yield TextArea(placeholder="Search...", compact=True)
