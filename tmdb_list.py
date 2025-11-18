@@ -11,5 +11,6 @@ class TMDB_List(ListView):
         self.clear()
         movies = []
         for i in movie_data:
-            movies.append(Movie(i["title"], i["vote_average"], i["genre_ids"]))
+            genre_ids = i.get("genre_ids", [])
+            movies.append(Movie(i["title"], i["vote_average"], genre_ids=genre_ids))
         self.extend(movies)

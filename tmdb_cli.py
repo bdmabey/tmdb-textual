@@ -14,7 +14,6 @@ class TMDB_App(App):
     CSS_PATH = "tmdb.tcss"
     BINDINGS = [
         ("d", "toggle_dark", "Toggle Dark Mode"),
-        ("s", "search", "Search for a movie"),
         ("q", "quit", "Quit")
         ]
 
@@ -50,12 +49,6 @@ class TMDB_App(App):
         list_view = self.query_one(f"#{message.category}-list", TMDB_List)
         list_view.populate(message.movies)
 
-    def on_key(self, event: Key):
-        """Selects the search bar."""
-        if event.character == "s":
-            search = self.query_one("#search")
-            search.focus()
-
     def compose(self) -> ComposeResult:
         yield Header(show_clock=True)
         yield Footer()
@@ -67,7 +60,6 @@ class TMDB_App(App):
         yield TMDB_List("now", id="now-list")
         yield TMDB_List("top", id="top-list")
         yield TMDB_List("up", id="up-list")
-        yield TextArea(placeholder="Search...", compact=True, id="search")
 
 if __name__ == "__main__":
     app = TMDB_App()
