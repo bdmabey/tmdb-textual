@@ -17,6 +17,7 @@ class TMDB_App(App):
         ("q", "quit", "Quit")
         ]
 
+    # Message to send info to TMDB_List
     class MovieListsLoaded(Message):
         def __init__(self, category: str, movies: list[dict]) -> None:
             super().__init__()
@@ -26,6 +27,7 @@ class TMDB_App(App):
     def on_mount(self) -> None:
         self.run_worker(self._load_all_movie_lists(), exclusive=True)
 
+    # async function to load all the movie lists.
     async def _load_all_movie_lists(self) -> None:
         categories = ["pop", "now", "top", "up"]
 
@@ -38,7 +40,6 @@ class TMDB_App(App):
     async def _load_and_post_movies(self, category: str) -> None:
         """Loads movies for a specific category and posts an event."""
         try:
-            # Assuming utilities.get_movie_lists is async
             movie_list_data = await utilities.get_movie_lists(category)
             self.post_message(self.MovieListsLoaded(category, movie_list_data))
         except Exception as e:
@@ -50,6 +51,7 @@ class TMDB_App(App):
         list_view.populate(message.movies)
 
     def compose(self) -> ComposeResult:
+        # Layout of the app. Utilizes tmdb.tcss for style.
         yield Header(show_clock=True)
         yield Footer()
         yield Label("Popular", id="pop")

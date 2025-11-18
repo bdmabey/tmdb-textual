@@ -13,6 +13,7 @@ async def get_movie_lists(category: str) -> list:
     elif category == "up":
         url = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1"
 
+    # loads api token for tmdb.
     with open("api.cfg") as f:
         api_key = f.read()
 
