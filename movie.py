@@ -1,4 +1,3 @@
-from textual.containers import VerticalGroup
 from textual.widgets import ListItem, Label
 from textual.app import ComposeResult
 
