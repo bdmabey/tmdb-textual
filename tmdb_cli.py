@@ -36,14 +36,10 @@ class TMDB_App(App):
         yield Label("Now Playing", id="now")
         yield Label("Top Rated", id="top")
         yield Label("Upcoming", id="up")
-        yield ListView(
-            ListItem(Label("test1")), 
-            ListItem(Label("asdf"))
-        )
-        # yield ListView(ListItem(Label("test2")))
-        yield TMDB_List()
-        yield Test_list()
-        yield ListView(ListItem(Label("test4")))
+        yield TMDB_List("pop")
+        yield TMDB_List("now")
+        yield TMDB_List("top")
+        yield TMDB_List("up")
         yield TextArea(placeholder="Search...", compact=True, id="search")
 
 if __name__ == "__main__":

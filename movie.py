@@ -3,7 +3,7 @@ from textual.widgets import ListItem, Label
 from textual.app import ComposeResult
 
 class Movie(ListItem):
-    def __init__(self, title: str = "title", rating: str = "0", genre: str = "unk"):
+    def __init__(self, title: str = "title", rating: float = 0.0, genre: str = "unk"):
         super().__init__()
         self.title = title
         self.rating = rating
@@ -11,5 +11,5 @@ class Movie(ListItem):
 
     def compose(self) -> ComposeResult:
         yield Label(self.title, id="title")
-        yield Label("Rating: " + self.rating)
+        yield Label("Rating: " + str(self.rating))
         yield Label("Genre: " + self.genre)
